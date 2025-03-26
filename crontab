@@ -1,0 +1,2 @@
+0 5 * *	0 /etc/haproxy/update_cert.sh >> /var/log/haproxy/certbot.log 2>&1
+0 3 * * 0 /etc/haproxy/update_spam_ip.sh >> /var/log/haproxy/blocklist.log 2>&1
