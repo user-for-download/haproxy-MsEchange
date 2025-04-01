@@ -1,12 +1,12 @@
 /var/log/haproxy/*.log {
     daily
-    rotate 30
+    rotate 14
+    compress
+    delaycompress
     missingok
     notifempty
-    sharedscripts
+    create 0640 haproxy haproxy
     postrotate
-	if systemctl is-active --quiet haproxy.service; then
-            systemctl reload haproxy.service > /dev/null 2>&1 || true
-        fi
+        /bin/systemctl reload haproxy >/dev/null 2>&1 || true
     endscript
 }

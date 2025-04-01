@@ -67,10 +67,10 @@ openssl x509 -noout -text -in external.pem | grep -A1 "Subject Alternative Name"
 ```bash
 SHA256 Fingerprint=10:CD:39:===:03:19:AA:19
 SHA256 Fingerprint=10:CD:39:===:03:19:AA:19
-            X509v3 Subject Alternative Name:
-                DNS:autodiscover.SITE.com, DNS:mail.SITE.com
-            X509v3 Subject Alternative Name:
-                DNS:autodiscover.SITE.com, DNS:mail.SITE.com
+    X509v3 Subject Alternative Name:
+        DNS:autodiscover.SITE.com, DNS:mail.SITE.com
+    X509v3 Subject Alternative Name:
+        DNS:autodiscover.SITE.com, DNS:mail.SITE.com
 ```
 
 ## Verify
@@ -86,4 +86,22 @@ curl -v -k --ntlm -u 'DOMAIN\user' https://mail.site.com/mapi/
 sudo systemctl status rsyslog
 sudo nano /etc/rsyslog.d/49-haproxy.conf
 sudo systemctl restart rsyslog.service
+```
+
+##
+```bash
+tree /etc/ssl/
+/etc/ssl/
+├── certs -> ../pki/tls/certs
+├── combined_cert_checksum
+├── mail
+│   ├── cert_20250331.pem
+│   ├── cert_20250331.pfx
+└── password
+tree  /var/log/haproxy/
+/var/log/haproxy/
+├── access.log
+├── certbot.log
+├── error.log
+└── status.log
 ```
